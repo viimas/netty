@@ -57,7 +57,7 @@ public final class BrotliDecoder extends ByteToMessageDecoder {
 
     /**
      * Creates a new BrotliDecoder
-     * @param inputBufferSize desired size of the input buffer in kB
+     * @param inputBufferSize desired size of the input buffer in bytes
      */
     public BrotliDecoder(int inputBufferSize) {
         this.inputBufferSize = inputBufferSize;
