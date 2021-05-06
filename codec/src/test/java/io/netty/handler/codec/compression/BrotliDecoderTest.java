@@ -16,16 +16,21 @@
 
 package io.netty.handler.codec.compression;
 
-import com.aayushatharva.brotli4j.Brotli4jLoader;
 import com.aayushatharva.brotli4j.encoder.BrotliOutputStream;
 import io.netty.channel.embedded.EmbeddedChannel;
+import org.junit.Assume;
+import org.junit.BeforeClass;
 
 import java.io.ByteArrayOutputStream;
 
 public class BrotliDecoderTest extends AbstractDecoderTest {
 
   public BrotliDecoderTest() throws Exception {
-    Brotli4jLoader.ensureAvailability();
+  }
+
+  @BeforeClass
+  public static void assumeBrotli() {
+    Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
   }
 
   @Override

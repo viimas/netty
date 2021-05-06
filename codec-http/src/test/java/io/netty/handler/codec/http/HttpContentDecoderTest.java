@@ -31,6 +31,7 @@ import io.netty.handler.codec.compression.ZlibWrapper;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 import org.apache.commons.io.IOUtils;
+import org.junit.Assume;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -187,7 +188,7 @@ public class HttpContentDecoderTest {
 
     @Test
     public void testResponseBrotliDecompression() {
-        assertTrue("Brotli should be available on this platform", Brotli.isAvailable());
+        Assume.assumeTrue(Brotli.isAvailable());
         HttpResponseDecoder decoder = new HttpResponseDecoder();
         HttpContentDecoder decompressor = new HttpContentDecompressor();
         HttpObjectAggregator aggregator = new HttpObjectAggregator(Integer.MAX_VALUE);
@@ -219,7 +220,7 @@ public class HttpContentDecoderTest {
 
     @Test
     public void testResponseChunksBrotliDecompression() {
-        assertTrue("Brotli should be available on this platform", Brotli.isAvailable());
+        Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
         HttpResponseDecoder decoder = new HttpResponseDecoder();
         HttpContentDecoder decompressor = new HttpContentDecompressor();
         HttpObjectAggregator aggregator = new HttpObjectAggregator(Integer.MAX_VALUE);
