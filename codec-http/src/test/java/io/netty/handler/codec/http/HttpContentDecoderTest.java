@@ -187,8 +187,9 @@ public class HttpContentDecoderTest {
     }
 
     @Test
-    public void testResponseBrotliDecompression() {
-        Assume.assumeTrue(Brotli.isAvailable());
+    public void testResponseBrotliDecompression() throws Throwable {
+//        Assume.assumeTrue(Brotli.isAvailable());
+        Brotli.ensureAvailability();
         HttpResponseDecoder decoder = new HttpResponseDecoder();
         HttpContentDecoder decompressor = new HttpContentDecompressor();
         HttpObjectAggregator aggregator = new HttpObjectAggregator(Integer.MAX_VALUE);
@@ -219,8 +220,9 @@ public class HttpContentDecoderTest {
     }
 
     @Test
-    public void testResponseChunksBrotliDecompression() {
-        Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
+    public void testResponseChunksBrotliDecompression() throws Throwable {
+//        Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
+        Brotli.ensureAvailability();
         HttpResponseDecoder decoder = new HttpResponseDecoder();
         HttpContentDecoder decompressor = new HttpContentDecompressor();
         HttpObjectAggregator aggregator = new HttpObjectAggregator(Integer.MAX_VALUE);

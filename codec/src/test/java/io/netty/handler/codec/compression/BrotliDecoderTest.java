@@ -29,8 +29,9 @@ public class BrotliDecoderTest extends AbstractDecoderTest {
   }
 
   @BeforeClass
-  public static void assumeBrotli() {
-    Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
+  public static void assumeBrotli() throws Throwable {
+//    Assume.assumeTrue("Brotli support is not available on this platform", Brotli.isAvailable());
+    Brotli.ensureAvailability();
   }
 
   @Override
